@@ -1,5 +1,6 @@
 # Git_User_key 快速設定 (Windows)
 為了讓電腦具有存取個人GitHub權限，提升作業速度，例如: 利用SSH進行複製而不必用HTTP的方式登入、VScode 推送權限等，可依照下方步驟進行批次檔案設定。
+詳細步驟可參考 [在Windows上建立GitHub的SSH key]([http://example.net/](https://medium.com/@brian-liu/在windows上建立github的ssh-key-564fc14a89ea))
 
 ### 1. 設定 User Details
 全域版本: github_set_global_user_detail.bat
