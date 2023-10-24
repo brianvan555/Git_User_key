@@ -16,7 +16,7 @@ set file_path=%mySSH_path%%ssh_file_name%
 if exist "%mySSH_path%\%ssh_file_name%" (
   echo Step 0: Process start.
 ) else (
-  echo Target doesn't exist，PLZ set or update mySSH_path parameter
+  echo Target doesn't exist, PLZ set or update mySSH_path parameter
   pause
   exit(0)
 )
