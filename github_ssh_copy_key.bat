@@ -1,14 +1,14 @@
 @echo off
 chcp 65001
 
-:: SSH Key 檔案名稱
+:: SSH Key file name
 set ssh_file_name=id_rsa
-:: SSH Key 存放路徑 (不含檔名)
-:: %userprofile% = 個人資料夾路徑 = C:\Users\user\
-:: %userprofile%\OneDrive\桌面\ = 放在 C:\Users\user\OneDrive\桌面\
+:: SSH Key file path (without file name)
+:: %userprofile% = Folder path = C:\Users\user\
+:: %userprofile%\OneDrive\桌面\ = The file is located at C:\Users\user\OneDrive\桌面\
 set mySSH_path=%userprofile%\OneDrive\桌面\
 
-:: 基本預設路徑 (以下非必要不更動)
+:: Default path (Do not make changes unless necessary)
 set ssh_home=.ssh
 set "ssh_home_path=%userprofile%\%ssh_home%\"
 set file_path=%mySSH_path%%ssh_file_name%
@@ -16,7 +16,7 @@ set file_path=%mySSH_path%%ssh_file_name%
 if exist "%mySSH_path%\%ssh_file_name%" (
   echo Step 0: Process start.
 ) else (
-  echo 目標檔案不存在，請設定或更新參數 mySSH_path
+  echo Target doesn't exist，PLZ set or update mySSH_path parameter
   pause
   exit(0)
 )
@@ -32,7 +32,7 @@ if exist %ssh_home_path% (
 
 :: Check ssh_key is exist or not.
 if exist "%ssh_home_path%/%ssh_file_name%" (
-  echo Step 2: 失敗! %ssh_home_path% 已存在名為 %ssh_file_name% 的檔案，若先前已於此電腦執行過本檔案請忽略。
+  echo Step 2: Failed! %ssh_file_name% has existed at %ssh_home_path%, ignore this message if you have executed the file in this computer.
 ) else (
   copy %file_path% %ssh_home_path%
   echo Step 2: COPY %file_path% to %ssh_home_path%.
@@ -41,13 +41,13 @@ if exist "%ssh_home_path%/%ssh_file_name%" (
 :: Chang permission of key
 
 :: Use key to connect github server.
-echo Step 3: 測試 SSH 連線。
+echo Step 3: Test SSH connection
 ssh -T -i "%ssh_home_path%/%ssh_file_name%" git@github.com
 
 
-echo NOTE: 出現"Hi xxx! You've successfully authenticated....." 表示成功
+echo NOTE: "Hi xxx! You've successfully authenticated....." means successful
 
-echo SSH Key 複製程式完成。
+echo SSH Key copied done.
 
-echo 按下任意建離開，關閉視窗。
+echo press any key to exit.
 pause
